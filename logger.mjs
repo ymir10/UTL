@@ -11,11 +11,13 @@ let CONFIG = {
         warnFile: 'warnings.log',
         maxFiles: 6,
         maxsize: 10485760 // 10MB
+}
 
-}
 function setConfig(config) {
-  CONFIG = { ...CONFIG, ...config };
+  Object.assign(CONFIG, config);
 }
+
+
 
 const logger = winston.createLogger({
   level: 'info',
