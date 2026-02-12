@@ -1,6 +1,5 @@
 // prodduction ready editor
-// use for editing files with support for syntax highlighting, auto-completion and error checking
-// can be extended to support multiple file types and languages
+// use for easier file editing on the server with backup and safety features
 
 import fs from 'fs';
 import path from 'path';
