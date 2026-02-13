@@ -7,6 +7,7 @@
 ////// replace: same as replaceALL but only replaces the first occurrence of each pattern
 ////// removeALL: remove all occurrences of patterns from string, takes string and array for patterns
 ////// remove: same as removeALL but only removes the first occurrence of each pattern
+////// subChange (str, start, end, operation): extract substring between two strings, perform async operation on it, and replace it back in the original string
 
 const Texter = {
 
@@ -133,6 +134,13 @@ const Texter = {
             result = result.replace(pattern, '');
         }
         return result;
+    },
+
+    subChange: async function(str, start, end, operation) {
+        const substr = Texter.extractBetween(str, start, end);
+        if (substr === null) throw new Error('Substring not found between specified delimiters');
+        const modifiedSubstr = await operation(substr);
+        return str.replace(substr, modifiedSubstr);
     }
 
 }

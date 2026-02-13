@@ -63,6 +63,14 @@ const Editor = {
         } else {
             throw new Error(`File does not exist or removal not allowed: ${filePath}`);
         }
+    },
+    getFileSizeMB: async function (filePath) {
+        try {
+            const stats = fsSync.statSync(filePath);
+            return stats.size / (1024 * 1024);
+        } catch (error) {
+            throw error ;
+        }
     }
 }
 
